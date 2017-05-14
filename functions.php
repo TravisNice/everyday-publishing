@@ -17,8 +17,8 @@
 	/* Register the menu bar that appears at the top of the pages */
 	register_nav_menu('top-menu-bar', __('Top Menu Bar'));
 	
-	/* Custom Walker Class for producing plain <a>Menu Item</a> links in our custom menu */
-	class everyday_publishing_top_menu extends Walker_Nav_Menu {
+	/* Custom Walker Classes for producing plain <a>Menu Item</a> links in our custom menu */
+	class everyday_publishing_large_menu extends Walker_Nav_Menu {
 		function start_lvl( &$output, $depth = 0, $args = array() ) {
 			$indent = str_repeat("\t", $depth);
 			$output .= "\n$indent\n";
@@ -43,6 +43,41 @@
 			$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 			$item_output = $args->before;
 			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button ep-hide-small ep-hover-light-brass">';
+			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+			$item_output .= '</a>';
+			$item_output .= $args->after;
+			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+		}
+		function end_el( &$output, $item, $depth = 0, $args = array() ) {
+			$output .= "\n";
+		}
+	}
+	
+	class everyday_publishing_small_menu extends Walker_Nav_Menu {
+		function start_lvl( &$output, $depth = 0, $args = array() ) {
+			$indent = str_repeat("\t", $depth);
+			$output .= "\n$indent\n";
+		}
+		function end_lvl( &$output, $depth = 0, $args = array() ) {
+			$indent = str_repeat("\t", $depth);
+			$output .= "$indent\n";
+		}
+		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+			$class_names = $value = '';
+			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+			$classes[] = 'menu-item-' . $item->ID;
+			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+			$output .= $indent . '';
+			$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+			$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+			$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+			$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+			$item_output = $args->before;
+			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button">';
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= '</a>';
 			$item_output .= $args->after;
