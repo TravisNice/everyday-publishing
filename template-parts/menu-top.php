@@ -22,12 +22,10 @@
 
 <div class="ep-top">
 	<div class="ep-bar ep-dark-brass ep-left-align">
-		<a href="/" class="ep-bar-item ep-button ep-light-brass">
+		<a href="/" class="ep-bar-item ep-button ep-light-brass ep-merriweather">
 			<i class="fa fa-home ep-margin-right">
 			</i>
-			<span style="font-family: Merriweather">
-				Everyday Publishing
-			</span>
+			Everyday Publishing
 		</a>
 		<?php wp_nav_menu ( $args ); ?>
 	</div>

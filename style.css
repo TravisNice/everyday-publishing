@@ -280,7 +280,7 @@ textarea
 html,
 body
 {
-	font-family:Verdana,sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size:15px;
 	line-height:1.5
 }
@@ -299,7 +299,7 @@ h6,
 .ep-slim,
 .ep-wide
 {
-	font-family:"Segoe UI",Arial,sans-serif
+	font-family: 'Merriweather', serif;
 }
 
 h1
@@ -334,7 +334,7 @@ h6
 
 .ep-serif
 {
-	font-family:"Times New Roman",Times,serif
+	font-family: 'Merriweather', serif;
 }
 
 h1,
@@ -1595,19 +1595,18 @@ input[type=radio].ep-radio:disabled+.ep-validate
 .ep-bottom
 {
 	width:100%;
-	z-index:1
+	z-index:1;
+	position:fixed;
 }
 
 .ep-top
 {
 	top:0
-	position: relative;
 }
 
 .ep-bottom
 {
 	bottom:0
-	position:fixed;
 }
 
 .ep-overlay
@@ -3192,18 +3191,30 @@ input[type=radio].ep-radio:disabled+.ep-validate
 	border-color:#000000 !important
 }
 
-.ep-top
-{
-	position: absolute;
-}
+/* dark		=>	#544832 */
+/* mid		=>	#a98d50 */
+/* light	=>	#dfbd65 */
 
-.ep-dark-brass {
+.ep-dark-brass
+{
 	background-color: #544832;
-	color:	#a98d50;
+	color:	#dfbd65;
 }
 
 .ep-light-brass,
-.ep-hover-light-brass:hover {
+.ep-hover-light-brass:hover
+{
 	background-color: #dfbd65 !important;
 	color: #544832 !important;
+}
+
+.ep-merriweather,
+.ep-merriweather-heavy
+{
+	font-family: 'Merriweather', serif;
+}
+
+.ep-merriweather-heavy
+{
+	font-weight: 900;
 }

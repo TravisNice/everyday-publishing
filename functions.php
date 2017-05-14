@@ -12,8 +12,7 @@
 	add_action ( 'wp_enqueue_scripts', function () { wp_enqueue_style ( 'font_awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' ); } );
 	
 	/* Enqueue Google Fonts Style Sheet. Don't forget to add new fonts on the end with '|<font>', don't load a new sheet. */
-	
-	add_action ( 'wp_enqueue_scripts', function () { wp_enqueue_style( 'GoogleFonts', '//fonts.googleapis.com/css?family=Merriweather' ); } );
+	add_action ( 'wp_enqueue_scripts', function () { wp_enqueue_style( 'https://fonts.googleapis.com/css?family=Merriweather:400,900|Montserrat' ); } );
 	
 	/* Register the menu bar that appears at the top of the pages */
 	register_nav_menu('top-menu-bar', __('Top Menu Bar'));
