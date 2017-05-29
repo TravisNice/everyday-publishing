@@ -6,13 +6,16 @@
 	if (!defined('EVERYDAY_PUBLISHING_THEME_PATH')) define('EVERYDAY_PUBLISHING_THEME_PATH', dirname(__FILE__));
 	
 	/* Enqueue our own style sheet */
-	add_action ( 'wp_enqueue_scripts', function () { wp_enqueue_style('everyday_publishing', get_stylesheet_uri()); } );
+	add_action('wp_enqueue_scripts', function(){wp_enqueue_style('everyday_publishing', get_stylesheet_uri());});
 	
 	/* Enque the Font Awesome Style Sheet to access their icons */
-	add_action ( 'wp_enqueue_scripts', function () { wp_enqueue_style ( 'font_awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' ); } );
+	add_action ('wp_enqueue_scripts', function(){wp_enqueue_style('font_awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');});
 	
-	/* Enqueue Google Fonts Style Sheet. Don't forget to add new fonts on the end with '|<font>', don't load a new sheet. */
-	add_action ( 'wp_enqueue_scripts', function () { wp_enqueue_style( 'https://fonts.googleapis.com/css?family=Merriweather:400,900|Montserrat' ); } );
+	/* Enqueue Google Fonts Style Sheet. Don't forget to add new fonts on the end with '|font_name', don't load a new sheet. */
+	add_action('wp_enqueue_scripts', function(){wp_enqueue_style('https://fonts.googleapis.com/css?family=Merriweather:400,900|Montserrat');});
+	
+	/* Allow us to use thumbnails and featured images in our theme */
+	add_action('after_setup_theme', function(){add_theme_support('post-thumbnails');});
 	
 	/* Register the menu bar that appears at the top of the pages */
 	register_nav_menu('top-menu-bar', __('Top Menu Bar'));

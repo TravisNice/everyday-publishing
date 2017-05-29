@@ -1604,6 +1604,16 @@ input[type=radio].ep-radio:disabled+.ep-validate
 	top:0
 }
 
+.logged-in .ep-top {
+	top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+	.logged-in .ep-top {
+		top: 46px;
+	}
+}
+
 .ep-bottom
 {
 	bottom:0
@@ -3217,4 +3227,11 @@ input[type=radio].ep-radio:disabled+.ep-validate
 .ep-merriweather-heavy
 {
 	font-weight: 900;
+}
+
+.ep-featured-image {
+	width: 100%;
+	height: 55%;
+	//min-height: 350px;
+	//max-height: 600px;
 }
