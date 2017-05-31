@@ -45,7 +45,7 @@
 			<i class="fa fa-bars">
 			</i>
 		</a>
-		<a href="/" class="ep-bar-item ep-button ep-light-brass ep-merriweather">
+		<a href="/" class="ep-bar-item ep-button ep-light-brass">
 			<i class="fa fa-home ep-margin-right">
 			</i>
 			Everyday Publishing

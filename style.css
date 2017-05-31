@@ -3216,17 +3216,6 @@ input[type=radio].ep-radio:disabled+.ep-validate
 	color: #544832 !important;
 }
 
-.ep-merriweather,
-.ep-merriweather-heavy
-{
-	font-family: 'Merriweather', serif;
-}
-
-.ep-merriweather-heavy
-{
-	font-weight: 900;
-}
-
 .ep-featured-image
 {
 	width: 100%;
