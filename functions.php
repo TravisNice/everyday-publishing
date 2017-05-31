@@ -14,6 +14,8 @@
 	/* Allow us to use thumbnails and featured images in our theme */
 	add_action('after_setup_theme', function(){add_theme_support('post-thumbnails');});
 	
+	add_action( 'widgets_init', function(){ register_sidebar( array( 'name' => 'Side Bar Widgets', 'id' => 'side-bar-widgets', 'before_widget' => '<div class="ep-container">', 'after_widget'  => '</div>', 'before_title'  => '<h4>', 'after_title'   => '</h4>' ) ); } );
+	
 	/* Register the menu bar that appears at the top of the pages */
 	register_nav_menu('top-menu-bar', __('Top Menu Bar'));
 	

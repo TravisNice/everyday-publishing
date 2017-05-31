@@ -1,4 +1,9 @@
 <?php
+	/*
+	 Template Name: Right Sidebar
+	 Template Post Type: post
+	 */
+
 	get_header();
 	if ( have_posts () ) {
 		while ( have_posts () ) {
@@ -8,8 +13,8 @@
 			} else {
 				get_template_part( 'template-parts/post-title', 'without-image' );
 			}
-			get_template_part( 'template-parts/post-content', 'without-sidebar' );
+			get_template_part( 'template-parts/post-content', 'with-sidebar' );
 		}
 	}
 	get_footer();
-	?>
+?>

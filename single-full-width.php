@@ -1,3 +1,8 @@
+/*
+	Template Name: No Sidebar
+	Template Post Type: post
+ */
+
 <?php
 	get_header();
 	if ( have_posts () ) {
