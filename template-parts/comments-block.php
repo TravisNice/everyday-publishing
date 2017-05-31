@@ -1,4 +1,4 @@
-<div id="comments" class="comments-area left col span-12">
+
 	<?php if ( have_comments() ) : ?>
 		<h2 class="x-large fuscia-front no-underline bottom-16 align-left col span-12">
 		<?php printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'simplicity' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' ); ?>
@@ -26,4 +26,3 @@
 	<?php endif; // have_comments() ?>
 
 	<?php comment_form( array( 'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>' ) ); ?>
-</div><!-- #comments -->
