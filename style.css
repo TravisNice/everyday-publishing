@@ -280,7 +280,7 @@ textarea
 html,
 body
 {
-	font-family: 'Montserrat', sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-size:15px;
 	line-height:1.5
 }
@@ -288,18 +288,6 @@ body
 html
 {
 	overflow-x:hidden
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.ep-slim,
-.ep-wide
-{
-	font-family: 'Merriweather', serif;
 }
 
 h1
@@ -334,7 +322,7 @@ h6
 
 .ep-serif
 {
-	font-family: 'Merriweather', serif;
+	font-family: serif;
 }
 
 h1,
@@ -1608,9 +1596,19 @@ input[type=radio].ep-radio:disabled+.ep-validate
 	top: 32px;
 }
 
+.ep-display-container
+{
+	margin-top: 32px;
+}
+
 @media screen and (max-width: 782px) {
 	.logged-in .ep-top {
 		top: 46px;
+	}
+	
+	.ep-display-container
+	{
+		margin-top: 46px;
 	}
 }
 
@@ -3229,9 +3227,8 @@ input[type=radio].ep-radio:disabled+.ep-validate
 	font-weight: 900;
 }
 
-.ep-featured-image {
+.ep-featured-image
+{
 	width: 100%;
 	height: 55%;
-	//min-height: 350px;
-	//max-height: 600px;
 }
