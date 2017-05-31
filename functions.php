@@ -19,6 +19,34 @@
 	/* Register the menu bar that appears at the top of the pages */
 	register_nav_menu('top-menu-bar', __('Top Menu Bar'));
 	
+	/* Woocommerce - Add theme support explicitly */
+	function woocommerce_support() {
+		
+		add_theme_support(
+				  'woocommerce'
+				  );
+		
+	}
+	
+	add_action( 'after_setup_theme', 'woocommerce_support' );
+	
+	function woocommerce_header_add_to_cart_fragment( $fragments ) {
+		
+		global $woocommerce;
+		
+		ob_start();
+		?>
+			<a class="ep-button ep-bar-item ep-dark-brass ep-hide-small ep-right" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
+		<?
+		$fragments['a.cart-contents'] = ob_get_clean();
+	
+		return $fragments;
+	
+	}
+	
+	add_filter( 'add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
+
+	
 	/* Custom Walker Classes for producing plain <a>Menu Item</a> links in our custom menu */
 	class everyday_publishing_large_menu extends Walker_Nav_Menu {
 		function start_lvl( &$output, $depth = 0, $args = array() ) {
