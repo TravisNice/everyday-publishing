@@ -13,7 +13,7 @@
 		}
 	
 	}
-	
+	get_template_part( 'template-parts/pagination' );
 	get_footer();
 	
 ?>
