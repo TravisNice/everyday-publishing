@@ -21,7 +21,7 @@
 	
 	/* Woocommerce - Add theme support explicitly */
 	add_action('after_setup_theme',function(){add_theme_support('woocommerce');});
-	add_filter('add_to_cart_fragments', function($fragments){global $woocommerce;ob_start();?><a class="ep-button ep-bar-item ep-dark-brass ep-hide-small ep-right" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a><?$fragments['a.cart-contents'] = ob_get_clean();return $fragments;});
+	add_filter('woocommerce_add_to_cart_fragments', function($fragments){global $woocommerce;ob_start();?><a class="ep-button ep-bar-item ep-dark-brass ep-hide-small ep-right" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a><?$fragments['a.cart-contents'] = ob_get_clean();return $fragments;});
 	
 	/* Custom Walker Classes for producing plain <a>Menu Item</a> links in our custom menu */
 	class everyday_publishing_large_menu extends Walker_Nav_Menu {

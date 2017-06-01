@@ -13,7 +13,7 @@
  Use it to make something cool, have fun, and share what you've learned with others.
  
  This stylesheet borrows heavily from the work of W3.CSS 2.97 Feb 2017 by Jan Egil and Borge Refsnes
- */
+*/
 
 html
 {
@@ -1599,19 +1599,9 @@ input[type=radio].ep-radio:disabled+.ep-validate
 	top: 32px;
 }
 
-.ep-display-container
-{
-	margin-top: 32px;
-}
-
 @media screen and (max-width: 782px) {
 	.logged-in .ep-top {
 		top: 46px;
-	}
-	
-	.ep-display-container
-	{
-		margin-top: 46px;
 	}
 }
 
@@ -3233,4 +3223,24 @@ input[type=radio].ep-radio:disabled+.ep-validate
 
 .ep-widget form {
 	padding: 16px;
+}
+
+.ep-bronze {
+	background-color: #cd7f32;
+	color: #fff;
+}
+
+.ep-silver {
+	background-color: #C0C0C0;
+	color: #fff;
+}
+
+.ep-gold {
+	background-color: #FFD700;
+	color: #fff;
+}
+
+.ep-strike {
+	text-decoration: line-through;
+	color: gray;
 }
