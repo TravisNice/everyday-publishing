@@ -14,38 +14,14 @@
 	/* Allow us to use thumbnails and featured images in our theme */
 	add_action('after_setup_theme', function(){add_theme_support('post-thumbnails');});
 	
-	add_action( 'widgets_init', function(){ register_sidebar( array( 'name' => 'Side Bar Widgets', 'id' => 'side-bar-widgets', 'before_widget' => '<div class="ep-container">', 'after_widget'  => '</div>', 'before_title'  => '<h4>', 'after_title'   => '</h4>' ) ); } );
+	add_action( 'widgets_init', function(){ register_sidebar( array( 'name' => 'Side Bar Widgets', 'id' => 'side-bar-widgets', 'before_widget' => '<div class="ep-container ep-card-2 ep-widget ep-margin">', 'after_widget'  => '</div>', 'before_title'  => '<h4>', 'after_title'   => '</h4>' ) ); } );
 	
 	/* Register the menu bar that appears at the top of the pages */
 	register_nav_menu('top-menu-bar', __('Top Menu Bar'));
 	
 	/* Woocommerce - Add theme support explicitly */
-	function woocommerce_support() {
-		
-		add_theme_support(
-				  'woocommerce'
-				  );
-		
-	}
-	
-	add_action( 'after_setup_theme', 'woocommerce_support' );
-	
-	function woocommerce_header_add_to_cart_fragment( $fragments ) {
-		
-		global $woocommerce;
-		
-		ob_start();
-		?>
-			<a class="ep-button ep-bar-item ep-dark-brass ep-hide-small ep-right" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
-		<?
-		$fragments['a.cart-contents'] = ob_get_clean();
-	
-		return $fragments;
-	
-	}
-	
-	add_filter( 'add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
-
+	add_action('after_setup_theme',function(){add_theme_support('woocommerce');});
+	add_filter('add_to_cart_fragments', function($fragments){global $woocommerce;ob_start();?><a class="ep-button ep-bar-item ep-dark-brass ep-hide-small ep-right" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a><?$fragments['a.cart-contents'] = ob_get_clean();return $fragments;});
 	
 	/* Custom Walker Classes for producing plain <a>Menu Item</a> links in our custom menu */
 	class everyday_publishing_large_menu extends Walker_Nav_Menu {
@@ -72,7 +48,7 @@
 			$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 			$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 			$item_output = $args->before;
-			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button ep-hide-small ep-hover-light-brass">';
+			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button ep-hide-small">';
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= '</a>';
 			$item_output .= $args->after;

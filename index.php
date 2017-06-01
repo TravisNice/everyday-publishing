@@ -8,7 +8,7 @@
 			
 			the_post ();
 			
-			get_template_part ( 'template-parts/content', 'with-sidebar' );
+			get_template_part ( 'template-parts/excerpt', 'without-sidebar' );
 			
 		}
 	
