@@ -40,7 +40,7 @@
 	</div>
 
 	<!-- Online Marketing -->
-	<div class="ep-display-container ep-animate-opacity" id="hosting">
+	<div class="ep-display-container ep-animate-opacity" id="marketing">
 		<img src="/wp-content/uploads/2017/06/Marketing-Artboard.jpg" alt="ONLINE MARKETING - It's a pay to play world" style="width:100%;height:56.25%;">
 		<div class="ep-container ep-display-left ep-text-white">
 			<span style="font-size: 2vw; font-weight: 600px;">ONLINE MARKETING</span>
