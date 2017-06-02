@@ -22,7 +22,7 @@
 			<span style="font-size: 1.8vw;">More than a simple facelift,<br />we give you a whole new user experience</span>
 		</div>
 		<div class="ep-container ep-display-bottomleft ep-margin-bottom">
-			<a href="#"><button class="ep-button ep-theme ep-hover-light-brass" style="font-size: 2vw;">LEARN MORE</button></a>
+			<a href="/website-design"><button class="ep-button ep-theme ep-hover-light-brass" style="font-size: 2vw;">LEARN MORE</button></a>
 		</div>
 	</div>
 
