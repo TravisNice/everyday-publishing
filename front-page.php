@@ -35,7 +35,7 @@
 			<span style="font-size: 1.8vw;">we keep your site running, secure, and FAST</span>
 		</div>
 		<div class="ep-container ep-display-bottomleft ep-margin-bottom">
-			<a href="#"><button class="ep-button ep-theme ep-hover-light-brass" style="font-size: 2vw;">LEARN MORE</button></a>
+			<a href="/website-hosting"><button class="ep-button ep-theme ep-hover-light-brass" style="font-size: 2vw;">LEARN MORE</button></a>
 		</div>
 	</div>
 
