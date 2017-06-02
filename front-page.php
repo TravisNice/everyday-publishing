@@ -2,7 +2,7 @@
 	
 	<!-- Heavy Lifting -->
 	<div class="ep-display-container ep-animate-opacity">
-		<img src="/wp-content/uploads/2017/05/We-do-the-Heavy-Lifting-5-1.jpg" alt="We do the heavy lifting in your marketing plan" style="width:100%;height:56.25%;">
+		<img src="/wp-content/uploads/2017/06/We-do-the-Heavy-Lifting-5-1.jpg" alt="We do the heavy lifting in your marketing plan" style="width:100%;height:56.25%;">
 		<div class="ep-container ep-display-left ep-text-white">
 			<span style="font-size: 2vw; font-weight: 600px;">WE DO THE HEAVY LIFTING</span>
 			<br/>
