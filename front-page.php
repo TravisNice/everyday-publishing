@@ -15,7 +15,7 @@
 
 	<!-- Website Design -->
 	<div class="ep-display-container ep-animate-opacity" id="design">
-		<img src="/wp-content/uploads/2017/05/Website-Design-2.jpg" alt="WEBSITE DESIGN - More than a simple facelift, we give you a new user experience" style="width:100%;height:56.25%;">
+		<img src="/wp-content/uploads/2017/06/Website-Design-2.jpg" alt="WEBSITE DESIGN - More than a simple facelift, we give you a new user experience" style="width:100%;height:56.25%;">
 		<div class="ep-container ep-display-right">
 			<span style="font-size: 2vw; font-weight: 600px;">WEBSITE DESIGN</span>
 			<br/>
@@ -28,7 +28,7 @@
 
 	<!-- Website Hosting -->
 	<div class="ep-display-container ep-animate-opacity" id="hosting">
-		<img src="/wp-content/uploads/2017/05/Hosting-Artboard.jpg" alt="WEBSITE HOSTING - we keep your site running, secure, and FAST" style="width:100%;height:56.25%;">
+		<img src="/wp-content/uploads/2017/06/Hosting-Artboard.jpg" alt="WEBSITE HOSTING - we keep your site running, secure, and FAST" style="width:100%;height:56.25%;">
 		<div class="ep-container ep-display-middle ep-text-white ep-center">
 			<span style="font-size: 2vw; font-weight: 600px;">WEBSITE HOSTING</span>
 			<br/>
@@ -41,7 +41,7 @@
 
 	<!-- Online Marketing -->
 	<div class="ep-display-container ep-animate-opacity" id="hosting">
-		<img src="/wp-content/uploads/2017/05/Marketing-Artboard.jpg" alt="ONLINE MARKETING - It's a pay to play world" style="width:100%;height:56.25%;">
+		<img src="/wp-content/uploads/2017/06/Marketing-Artboard.jpg" alt="ONLINE MARKETING - It's a pay to play world" style="width:100%;height:56.25%;">
 		<div class="ep-container ep-display-left ep-text-white">
 			<span style="font-size: 2vw; font-weight: 600px;">ONLINE MARKETING</span>
 			<br/>
@@ -63,7 +63,7 @@
 		<div class="ep-quarter">
 			<div class="ep-card-2 ep-white">
 				<a href="https://www.goondiwindichamber.com.au/">
-					<img src="/wp-content/uploads/2017/05/Goondiwindi-Chamber-of-Commerce-Logo-512px-170203.png" alt="Goondiwindi Chamber of Commerce" style="width:100%">
+					<img src="/wp-content/uploads/2017/06/Goondiwindi-Chamber-of-Commerce-Logo-512px-170203.png" alt="Goondiwindi Chamber of Commerce" style="width:100%">
 				</a>
 				<hr/>
 				<div class="ep-container ep-center">
@@ -75,7 +75,7 @@
 		<div class="ep-quarter">
 			<div class="ep-card-2 ep-white">
 				<a href="https://www.luckythai.com.au/">
-					<img src="/wp-content/uploads/2017/05/Blue-Elephant-Logo.png" alt="Lucky Thai Restaurant" style="width:100%">
+					<img src="/wp-content/uploads/2017/06/Blue-Elephant-Logo.png" alt="Lucky Thai Restaurant" style="width:100%">
 				</a>
 				<hr/>
 				<div class="ep-container ep-center">
@@ -87,7 +87,7 @@
 		<div class="ep-quarter">
 			<div class="ep-card-2 ep-white">
 				<a href="https://www.brookesaxby.com.au/">
-					<img src="/wp-content/uploads/2017/05/brooke-saxby-logo.png" alt="365 Red Faces" style="width:100%">
+					<img src="/wp-content/uploads/2017/06/brooke-saxby-logo.png" alt="365 Red Faces" style="width:100%">
 				</a>
 				<hr/>
 				<div class="ep-container ep-center">
