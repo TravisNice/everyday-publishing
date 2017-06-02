@@ -188,7 +188,7 @@
 				<p><i class="fa fa-envelope-o ep-text-teal ep-xlarge"></i>  query@everydaypublishing.com.au</p>
 			</div>
 			<div class="ep-col m7">
-				<?php echo do_shortcode('[contact-form-7 id="45" title="Contact form 1" html_class="ep-container ep-card-4 ep-padding-16 ep-white"]'); ?>
+				<?php echo do_shortcode('[contact-form-7 id="943" title="Front Page Form" html_class="ep-container ep-card-4 ep-padding-16 ep-white"]'); ?>
 			</div>
 		</div>
 	</div>
