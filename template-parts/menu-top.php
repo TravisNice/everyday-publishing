@@ -57,7 +57,7 @@
 	</div>
 
 	<!-- Small Screens -->
-	<div id="smallNav" class="ep-bar-block ep-dark-brass ep-hide ep-hide-large ep-hide-medium">
+	<div id="smallNav" class="ep-bar-block ep-dark-brass ep-hide ep-hide-large ep-hide-medium" href="javascript:void(0);" onclick="openNav()">
 		<?php wp_nav_menu ( $smallArgs ); ?>
 	</div>
 </div>
