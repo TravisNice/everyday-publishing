@@ -6,49 +6,73 @@
 	if ( !defined( 'EVERYDAY_PUBLISHING_THEME_PATH' ) ) define( 'EVERYDAY_PUBLISHING_THEME_PATH', dirname( __FILE__ ) );
 	
 	/* Enqueue our own style sheet */
-	add_action( 'wp_enqueue_scripts', function () {
-			wp_enqueue_style( 'everyday_publishing', get_stylesheet_uri() );
-		   }
+	add_action(
+        'wp_enqueue_scripts',
+        function ()
+        {
+            wp_enqueue_style( 'everyday_publishing', get_stylesheet_uri() );
+        }
 	);
 	
 	/* Enque the Font Awesome Style Sheet to access their icons */
-	add_action( 'wp_enqueue_scripts', function () {
-			wp_enqueue_style( 'font_awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
-		   }
-	);
+	add_action(
+        'wp_enqueue_scripts',
+        function ()
+        {
+            wp_enqueue_style( 'font_awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
+        }
+    );
 	
 	/* Allow us to use thumbnails and featured images in our theme */
-	add_action( 'after_setup_theme', function () {
-			add_theme_support( 'post-thumbnails' );
-		   }
-	);
+	add_action(
+        'after_setup_theme',
+        function ()
+        {
+            add_theme_support( 'post-thumbnails' );
+        }
+    );
 	
-	add_action( 'widgets_init', function () {
-			register_sidebar( array('name' => 'Side Bar Widgets',
-						'id' => 'side-bar-widgets',
-						'before_widget' => '<div class="ep-container ep-card-2 ep-widget ep-margin">',
-						'after_widget'  => '</div>',
-						'before_title'  => '<h4>',
-						'after_title'   => '</h4>'
-						)
-					 );
-		   }
-	);
+	add_action(
+        'widgets_init',
+        function ()
+        {
+            register_sidebar(
+                array(
+                    'name'          => 'Front Page Widgets',
+                    'id'            => 'front-page-widgets',
+                    'before_widget' => '',
+                    'after_widget'  => '',
+                    'before_title'  => '',
+                    'after_title'   => ''
+                )
+            );
+        }
+    );
 	
 	/* Register the menu bar that appears at the top of the pages */
-	register_nav_menu( 'top-menu-bar', __( 'Top Menu Bar' ) );
+	register_nav_menu(
+        'top-menu-bar',
+        __( 'Top Menu Bar' )
+    );
 	
 	/* Custom Walker Classes for producing plain <a>Menu Item</a> links in our custom menu */
-	class everyday_publishing_large_menu extends Walker_Nav_Menu {
-		function start_lvl( &$output, $depth = 0, $args = array() ) {
+    
+	class everyday_publishing_large_menu extends Walker_Nav_Menu
+    {
+        function start_lvl( &$output, $depth = 0, $args = array() )
+        {
 			$indent = str_repeat("\t", $depth);
 			$output .= "\n$indent\n";
 		}
-		function end_lvl( &$output, $depth = 0, $args = array() ) {
+        
+        function end_lvl( &$output, $depth = 0, $args = array() )
+        {
 			$indent = str_repeat("\t", $depth);
 			$output .= "$indent\n";
 		}
-		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        
+        function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 )
+        {
 			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 			$class_names = $value = '';
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
@@ -69,21 +93,29 @@
 			$item_output .= $args->after;
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
-		function end_el( &$output, $item, $depth = 0, $args = array() ) {
+        
+        function end_el( &$output, $item, $depth = 0, $args = array() )
+        {
 			$output .= "\n";
 		}
 	}
 	
-	class everyday_publishing_small_menu extends Walker_Nav_Menu {
-		function start_lvl( &$output, $depth = 0, $args = array() ) {
+	class everyday_publishing_small_menu extends Walker_Nav_Menu
+    {
+		function start_lvl( &$output, $depth = 0, $args = array() )
+        {
 			$indent = str_repeat("\t", $depth);
 			$output .= "\n$indent\n";
 		}
-		function end_lvl( &$output, $depth = 0, $args = array() ) {
+        
+		function end_lvl( &$output, $depth = 0, $args = array() )
+        {
 			$indent = str_repeat("\t", $depth);
 			$output .= "$indent\n";
 		}
-		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        
+		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 )
+        {
 			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 			$class_names = $value = '';
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
@@ -104,7 +136,9 @@
 			$item_output .= $args->after;
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
-		function end_el( &$output, $item, $depth = 0, $args = array() ) {
+        
+		function end_el( &$output, $item, $depth = 0, $args = array() )
+        {
 			$output .= "\n";
 		}
 	}
