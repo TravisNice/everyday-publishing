@@ -31,7 +31,8 @@
             add_theme_support( 'post-thumbnails' );
         }
     );
-	
+    
+	/* Widgetise the front page and remove the titles */
 	add_action(
         'widgets_init',
         function ()
@@ -47,6 +48,16 @@
                 )
             );
         }
+    );
+    
+    add_filter(
+        'widget_title',
+        function ()
+        {
+               return '';
+        },
+        10,
+        1
     );
 	
 	/* Register the menu bar that appears at the top of the pages */
