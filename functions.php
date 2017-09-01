@@ -67,6 +67,113 @@
             );
         }
     );
+   
+    /* Widgets for the Footer */
+    add_action(
+        'widgets_init',
+        function ()
+        {
+            register_sidebar(
+                array(
+                    'name'          => 'Footer (left) Widgets',
+                    'id'            => 'footer-left-widgets',
+                    'before_widget' => '',
+                    'after_widget'  => '',
+                    'before_title'  => '',
+                    'after_title'   => ''
+                )
+            );
+        }
+    );
+    
+    add_action(
+        'widgets_init',
+        function ()
+        {
+            register_sidebar(
+                array(
+                    'name'          => 'Footer (centre) Widgets',
+                    'id'            => 'footer-centre-widgets',
+                    'before_widget' => '',
+                    'after_widget'  => '',
+                    'before_title'  => '',
+                    'after_title'   => ''
+                )
+            );
+        }
+    );
+    
+    add_action(
+        'widgets_init',
+        function ()
+        {
+            register_sidebar(
+                array(
+                    'name'          => 'Footer (right) Widgets',
+                    'id'            => 'footer-right-widgets',
+                    'before_widget' => '',
+                    'after_widget'  => '',
+                    'before_title'  => '',
+                    'after_title'   => ''
+                )
+            );
+        }
+    );
+    
+    class copyrightWidget extends WP_Widget {
+        public function __construct() {
+            parent::__construct(
+                'epCopyrightWidget', // Base ID
+                'Everyday Publishing Copyright', // Name
+                array(
+                    'description' => __( 'Inserts the copyright with a php generated date.', 'text_domain' ),
+                    'title' => __( 'Everyday Publishing Copyright', 'text_domain' )
+                )
+            );
+        }
+            
+        public function widget( $args, $instance )
+        {
+            extract( $args );
+            $title = apply_filters( 'widget_title', $instance['title'] );
+            echo $before_widget;
+            if ( !empty( $title ) )
+            {
+                echo $before_title . $title . $after_title;
+            }
+            echo "<p>Copyright &copy; " . date('Y') . " Everyday Publishing. All Rights Reserved.</p>";
+            echo $after_widget;
+        }
+            
+        public function form( $instance )
+        {
+            if ( isset( $instance[ 'title' ] ) )
+            {
+                $title = $instance[ 'title' ];
+            }
+            else
+            {
+                $title = __( 'New title', 'text_domain' );
+            }
+            echo "<p>Copyright &copy; " . date('Y') . " Everyday Publishing. All Rights Reserved.</p>";
+        }
+    
+        public function update( $new_instance, $old_instance )
+        {
+            $instance = array();
+            $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+            return $instance;
+        }
+    }
+    
+    add_action(
+        'widgets_init',
+        function() {
+            register_widget(
+                'copyrightWidget'
+            );
+        }
+    );
 	
 	/* Register the menu bar that appears at the top of the pages */
 	register_nav_menu(
@@ -106,7 +213,7 @@
 			$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 			$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 			$item_output = $args->before;
-			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button ep-hide-small">';
+			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button ep-hide-small ep-hover-light-brass">';
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= '</a>';
 			$item_output .= $args->after;
@@ -149,7 +256,7 @@
 			$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 			$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 			$item_output = $args->before;
-			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button">';
+			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button ep-hover-light-brass">';
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= '</a>';
 			$item_output .= $args->after;

@@ -1496,7 +1496,8 @@ input[type=radio].ep-radio:disabled+.ep-validate
 	}
 	
 	.ep-topnav,
-	.ep-navbar
+	.ep-navbar,
+    .ep-align-center-small
 	{
 		text-align:center
 	}
