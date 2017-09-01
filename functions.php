@@ -50,7 +50,7 @@
         }
     );
     
-    if ( is_front_page() )
+    if ( is_home() )
     {
         add_filter(
             'widget_title',
