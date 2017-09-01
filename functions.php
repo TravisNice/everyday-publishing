@@ -72,7 +72,7 @@
                 array(
                     'name'          => 'Posts Sidebar Widgets',
                     'id'            => 'side-bar-widgets',
-                    'before_widget' => '<div class="ep-card ep-margin">',
+                    'before_widget' => '<div class="ep-card ep-margin ep-padding-medium">',
                     'after_widget'  => '</div>',
                     'before_title'  => '<h4>',
                     'after_title'   => '</h4>'
