@@ -1,9 +1,9 @@
-/*
-	Template Name: No Sidebar
-	Template Post Type: post
- */
-
 <?php
+    /*
+	    Template Name: No Sidebar
+	    Template Post Type: post
+     */
+    
 	get_header();
 	if ( have_posts () ) {
 		while ( have_posts () ) {
@@ -17,4 +17,5 @@
 		}
 	}
 	get_footer();
-	?>
+    
+?>
