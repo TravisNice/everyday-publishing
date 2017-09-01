@@ -50,15 +50,18 @@
         }
     );
     
-    add_filter(
-        'widget_title',
-        function ()
-        {
-               return '';
-        },
-        10,
-        1
-    );
+    if ( is_front_page() )
+    {
+        add_filter(
+            'widget_title',
+            function ()
+            {
+                return '';
+            },
+            10,
+            1
+        );
+    }
     
     /* Widgets for the Sidebar in Posts */
     add_action(
@@ -69,7 +72,7 @@
                 array(
                     'name'          => 'Posts Sidebar Widgets',
                     'id'            => 'side-bar-widgets',
-                    'before_widget' => '<div class="ep-card">',
+                    'before_widget' => '<div class="ep-card ep-margin">',
                     'after_widget'  => '</div>',
                     'before_title'  => '<h4>',
                     'after_title'   => '</h4>'
