@@ -69,10 +69,10 @@
                 array(
                     'name'          => 'Posts Sidebar Widgets',
                     'id'            => 'side-bar-widgets',
-                    'before_widget' => '',
-                    'after_widget'  => '',
-                    'before_title'  => '',
-                    'after_title'   => ''
+                    'before_widget' => '<div class="ep-card">',
+                    'after_widget'  => '</div>',
+                    'before_title'  => '<h4>',
+                    'after_title'   => '</h4>'
                 )
             );
         }
