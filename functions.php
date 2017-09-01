@@ -59,6 +59,24 @@
         10,
         1
     );
+    
+    /* Widgets for the Sidebar in Posts */
+    add_action(
+        'widgets_init',
+        function ()
+        {
+            register_sidebar(
+                array(
+                    'name'          => 'Posts Sidebar Widgets',
+                    'id'            => 'side-bar-widgets',
+                    'before_widget' => '',
+                    'after_widget'  => '',
+                    'before_title'  => '',
+                    'after_title'   => ''
+                )
+            );
+        }
+    );
 	
 	/* Register the menu bar that appears at the top of the pages */
 	register_nav_menu(
