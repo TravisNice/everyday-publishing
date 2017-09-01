@@ -1,5 +1,17 @@
 <?php
-    remove_filter( 'the_content', 'wpautop' );
+    remove_filter(
+        'the_content', 'wpautop'
+    );
+
+    add_filter(
+        'widget_title',
+        function ()
+        {
+            return '';
+        },
+        10,
+        1
+    );
     
     if ( 'posts' == get_option( 'show_on_front' ) )
     {

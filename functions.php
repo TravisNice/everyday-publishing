@@ -50,19 +50,6 @@
         }
     );
     
-    if ( is_home() )
-    {
-        add_filter(
-            'widget_title',
-            function ()
-            {
-                return '';
-            },
-            10,
-            1
-        );
-    }
-    
     /* Widgets for the Sidebar in Posts */
     add_action(
         'widgets_init',
