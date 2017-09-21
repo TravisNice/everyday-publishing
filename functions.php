@@ -268,4 +268,16 @@
 			$output .= "\n";
 		}
 	}
+
+	/* Remove automatic paragraph breaks from content and excerpt */
+	remove_filter(
+		'the_content',
+		'wpautop'
+	);
+
+	remove_filter(
+		'the_excerpt',
+		'wpautop'
+	);
+
 ?>
