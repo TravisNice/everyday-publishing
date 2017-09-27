@@ -32,7 +32,8 @@
 			$to = "query@everydaypublishing.com.au";
 			$subject = "Everyday Publishing Contact Form";
 			$message = $your_message;
-			$headers = array('Content-Type: text/html; charset=UTF-8', 'From: '. $your_name .' '. $your_email);
+			$from = 'From: '. $your_name .' <'. $your_email .'>';
+			$headers = array('Content-Type: text/html; charset=UTF-8', $from );
 			$attachments = array();
 
 			wp_mail( $to, $subject, $message, $headers, $attachments );
