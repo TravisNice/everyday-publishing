@@ -5,14 +5,7 @@ defined( 'ABSPATH' ) or die ( 'You are not allowed here. Shame on you for snoopi
 /* include other classes */
 require_once ( 'classes/menus.php' );
 
-/* Remove jQuery Migrate Script from header */
-function ep_stop_loading_wp_embed_and_jquery() {
-	if (!is_admin()) {
-	}
-}
-add_action('init', 'ep_stop_loading_wp_embed_and_jquery');
-
-/* Clear the head */
+/* Remove extraneous links from header */
 remove_action( 'rest_api_init', 'wp_oembed_register_route' );
 remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
@@ -30,7 +23,7 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
 
 add_filter( 'embed_oembed_discover', '__return_false' );
-add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
+//add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
 add_filter( 'xmlrpc_enabled', '__return_false' );
 add_filter( 'wp_headers', function ( $headers ) {unset( $headers['X-Pingback'] );return $headers;} );
 add_filter( 'xmlrpc_methods', function( $methods ) {unset( $methods[‘pingback.ping’] );return $methods;} );
@@ -42,7 +35,7 @@ function ep_async_scripts($url)
   else if ( is_admin() ) return str_replace( '#asyncload', '', $url );
   else return str_replace( '#asyncload', '', $url )."' async='async";
 }
-add_filter( 'clean_url', 'ep_async_scripts', 11, 1 );
+add_filter( 'clean_url', 'ep_async_scripts' );
 
 /* Enqueue the style sheets that we will use in the theme */
 function ep_enqueue_scripts () {

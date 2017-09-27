@@ -1,7 +1,7 @@
 <?php
     /*
      * Template Name: Right Sidebar
-     * Template Post Type: post, page, event
+     * Template Post Type: post
      */
 
 	get_header ();
@@ -24,7 +24,7 @@
 			if (comments_open()) comments_template();
 		}
 	}
-	
+
 	echo '</main>';
 
 	get_sidebar();

@@ -1,7 +1,7 @@
 <?php
 /*
  * Template Name: Right Sidebar
- * Template Post Type: post, page, event
+ * Template Post Type: page
  */
 
 get_header ();
