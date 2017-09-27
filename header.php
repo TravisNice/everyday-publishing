@@ -41,7 +41,7 @@ touch with us through our contact page. -->
 				<i class="fa fa-home"></i>
 				Everyday Publishing
 			</a>
-			<span class="breadcrumb-menu"><?php echo wp_title(); ?></span>
+			<span class="breadcrumb-menu"><?php if (!is_front_page()) echo wp_title(); ?></span>
 			<div id="navMenu" style="display: none;">
 				<?php wp_nav_menu ( $navArgs ); ?>
 			</div>
