@@ -3,7 +3,7 @@
 * Author: Travis J. Nice
 * Author URI: http://www.everydaypublishing.com.au/
 * Description: I wanted something fast and light, where all the design gets out of the way. I wanted something where the shapes and fonts would speak for themselves. With a bit of tweaking, I think I'll get it!
-* Version: 2.1.6
+* Version: 2.1.7
 * License: GNU General Public License v2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Tags: minimilist, reponsive, grid, mobile first
@@ -13,7 +13,7 @@
 * Use it to make something cool, have fun, and share what you've learned with others.
 *
 */
-*{box-sizing:border-box;}
+*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 a{color:#000;font-weight:600;text-decoration:none;transition:.75s;-o-transition:.75s;-ms-transition:.75s;-moz-transition:.75s;-webkit-transition:.75s;}
 a:hover{color:#ccc;}
 aside{grid-area:ep-aside;margin:0 auto;max-width:20em;width:100%;}
