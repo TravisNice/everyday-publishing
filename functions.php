@@ -28,7 +28,7 @@ add_filter( 'xmlrpc_enabled', '__return_false' );
 add_filter( 'wp_headers', function ( $headers ) {unset( $headers['X-Pingback'] );return $headers;} );
 add_filter( 'xmlrpc_methods', function( $methods ) {unset( $methods[‘pingback.ping’] );return $methods;} );
 
-/* Support asyncronus loading of enqueued scripts */
+/* Support asyncronus loading of enqueued scripts
 function ep_async_scripts($url)
 {
   if ( strpos( $url, '#asyncload') === false ) return $url;
@@ -37,17 +37,17 @@ function ep_async_scripts($url)
 }
 add_filter( 'clean_url', 'ep_async_scripts' );
 
-/* Enqueue the style sheets that we will use in the theme */
+ Enqueue the style sheets that we will use in the theme */
 function ep_enqueue_scripts () {
 	wp_deregister_script('wp-embed');
 	wp_deregister_script('jquery');
 
-	/* JavaScript for our own theme that we know is shown on every page */
-	wp_enqueue_script ( 'toggle_navigation', get_template_directory_uri().'/includes/toggle.js#asyncload' );
+	/* JavaScript for our own theme that we know is shown on every page
+	wp_enqueue_script ( 'toggle_navigation', get_template_directory_uri().'/includes/toggle.js#asyncload' );*/
 
-	/* CSS for our own theme that we know is shown on every page */
+	/* CSS for our own theme that we know is shown on every page
 	wp_enqueue_style ( 'everyday-publishing', get_stylesheet_uri().'#asyncload' );
-	wp_enqueue_style ( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css#asyncload' );
+	wp_enqueue_style ( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css#asyncload' );*/
 }
 add_action( 'wp_enqueue_scripts', 'ep_enqueue_scripts' );
 

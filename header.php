@@ -30,9 +30,7 @@ touch with us through our contact page. -->
 <?php wp_head(); ?>
 
 </head>
-<style>
 
-</style>
 <body <?php body_class(); ?> >
 	<header>
 		<nav>
