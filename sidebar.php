@@ -1,3 +1,7 @@
 <?php
-	get_template_part( 'template-parts/side-bar', 'widgets' );
-?>
+        if (is_active_sidebar('ep-aside-widgets'))
+        {
+            echo '<aside>';
+            dynamic_sidebar('ep-aside-widgets');
+            echo '</aside>';
+        }

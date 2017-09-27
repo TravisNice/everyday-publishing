@@ -1,29 +1,20 @@
-<?php
-    remove_filter(
-        'the_content', 'wpautop'
-    );
+<?php get_header(); ?>
 
-    add_filter(
-        'widget_title',
-        function ()
-        {
-            return '';
-        },
-        10,
-        1
-    );
-    
-    if ( 'posts' == get_option( 'show_on_front' ) )
-    {
-        include( get_home_template() );
-    }
-    else
-    {
-        if ( is_active_sidebar( 'front-page-widgets' ) )
-        {
-            get_header();
-            dynamic_sidebar( 'front-page-widgets' );
-            get_footer();
-        }
-    }
-?>
+<main>
+  <article class="ep-design">
+    <h5>WEBSITE DESIGN</h5>
+    <a href="/website-design">LEARN MORE</a>
+  </article>
+
+  <article class="ep-advertising">
+    <h5>ADVERTISING CAMPAIGNS</h5>
+    <a href="/website-advertising">LEARN MORE</a>
+  </article>
+
+  <article class="ep-content">
+    <h5>CONTENT CREATION</h5>
+    <a href="/website-content">LEARN MORE</a>
+  </article>
+</main>
+
+<?php get_footer(); ?>

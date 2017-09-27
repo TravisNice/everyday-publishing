@@ -1,283 +1,97 @@
 <?php
-	/* Don't let anyone access this script directly */
-	defined( 'ABSPATH' ) or die ( 'You are not allowed here. Shame on you for snooping :-(' );
-	
-	/* Create a globally defined path to the root of the theme's folder */
-	if ( !defined( 'EVERYDAY_PUBLISHING_THEME_PATH' ) ) define( 'EVERYDAY_PUBLISHING_THEME_PATH', dirname( __FILE__ ) );
-	
-	/* Enqueue our own style sheet */
-	add_action(
-        'wp_enqueue_scripts',
-        function ()
-        {
-            wp_enqueue_style( 'everyday_publishing', get_stylesheet_uri() );
-        }
-	);
-	
-	/* Enque the Font Awesome Style Sheet to access their icons */
-	add_action(
-        'wp_enqueue_scripts',
-        function ()
-        {
-            wp_enqueue_style( 'font_awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
-        }
-    );
-	
-	/* Allow us to use thumbnails and featured images in our theme */
-	add_action(
-        'after_setup_theme',
-        function ()
-        {
-            add_theme_support( 'post-thumbnails' );
-        }
-    );
-    
-	/* Widgetise the front page and remove the titles */
-	add_action(
-        'widgets_init',
-        function ()
-        {
-            register_sidebar(
-                array(
-                    'name'          => 'Front Page Widgets',
-                    'id'            => 'front-page-widgets',
-                    'before_widget' => '',
-                    'after_widget'  => '',
-                    'before_title'  => '',
-                    'after_title'   => ''
-                )
-            );
-        }
-    );
-    
-    /* Widgets for the Sidebar in Posts */
-    add_action(
-        'widgets_init',
-        function ()
-        {
-            register_sidebar(
-                array(
-                    'name'          => 'Posts Sidebar Widgets',
-                    'id'            => 'side-bar-widgets',
-                    'before_widget' => '<div class="ep-card ep-margin ep-padding-medium">',
-                    'after_widget'  => '</div>',
-                    'before_title'  => '<h4>',
-                    'after_title'   => '</h4>'
-                )
-            );
-        }
-    );
-   
-    /* Widgets for the Footer */
-    add_action(
-        'widgets_init',
-        function ()
-        {
-            register_sidebar(
-                array(
-                    'name'          => 'Footer (left) Widgets',
-                    'id'            => 'footer-left-widgets',
-                    'before_widget' => '',
-                    'after_widget'  => '',
-                    'before_title'  => '',
-                    'after_title'   => ''
-                )
-            );
-        }
-    );
-    
-    add_action(
-        'widgets_init',
-        function ()
-        {
-            register_sidebar(
-                array(
-                    'name'          => 'Footer (centre) Widgets',
-                    'id'            => 'footer-centre-widgets',
-                    'before_widget' => '',
-                    'after_widget'  => '',
-                    'before_title'  => '',
-                    'after_title'   => ''
-                )
-            );
-        }
-    );
-    
-    add_action(
-        'widgets_init',
-        function ()
-        {
-            register_sidebar(
-                array(
-                    'name'          => 'Footer (right) Widgets',
-                    'id'            => 'footer-right-widgets',
-                    'before_widget' => '',
-                    'after_widget'  => '',
-                    'before_title'  => '',
-                    'after_title'   => ''
-                )
-            );
-        }
-    );
-    
-    class copyrightWidget extends WP_Widget {
-        public function __construct() {
-            parent::__construct(
-                'epCopyrightWidget', // Base ID
-                'Everyday Publishing Copyright', // Name
-                array(
-                    'description' => __( 'Inserts the copyright with a php generated date.', 'text_domain' ),
-                    'title' => __( 'Everyday Publishing Copyright', 'text_domain' )
-                )
-            );
-        }
-            
-        public function widget( $args, $instance )
-        {
-            extract( $args );
-            $title = apply_filters( 'widget_title', $instance['title'] );
-            echo $before_widget;
-            if ( !empty( $title ) )
-            {
-                echo $before_title . $title . $after_title;
-            }
-            echo "<p>Copyright &copy; " . date('Y') . " Everyday Publishing. All Rights Reserved.</p>";
-            echo $after_widget;
-        }
-            
-        public function form( $instance )
-        {
-            if ( isset( $instance[ 'title' ] ) )
-            {
-                $title = $instance[ 'title' ];
-            }
-            else
-            {
-                $title = __( 'New title', 'text_domain' );
-            }
-            echo "<p>Copyright &copy; " . date('Y') . " Everyday Publishing. All Rights Reserved.</p>";
-        }
-    
-        public function update( $new_instance, $old_instance )
-        {
-            $instance = array();
-            $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-            return $instance;
-        }
-    }
-    
-    add_action(
-        'widgets_init',
-        function() {
-            register_widget(
-                'copyrightWidget'
-            );
-        }
-    );
-	
-	/* Register the menu bar that appears at the top of the pages */
-	register_nav_menu(
-        'top-menu-bar',
-        __( 'Top Menu Bar' )
-    );
-	
-	/* Custom Walker Classes for producing plain <a>Menu Item</a> links in our custom menu */
-    
-	class everyday_publishing_large_menu extends Walker_Nav_Menu
-    {
-        function start_lvl( &$output, $depth = 0, $args = array() )
-        {
-			$indent = str_repeat("\t", $depth);
-			$output .= "\n$indent\n";
-		}
-        
-        function end_lvl( &$output, $depth = 0, $args = array() )
-        {
-			$indent = str_repeat("\t", $depth);
-			$output .= "$indent\n";
-		}
-        
-        function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 )
-        {
-			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-			$class_names = $value = '';
-			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-			$classes[] = 'menu-item-' . $item->ID;
-			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
-			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-			$output .= $indent . '';
-			$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-			$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-			$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-			$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-			$item_output = $args->before;
-			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button ep-hide-small ep-hover-light-brass">';
-			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-			$item_output .= '</a>';
-			$item_output .= $args->after;
-			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-		}
-        
-        function end_el( &$output, $item, $depth = 0, $args = array() )
-        {
-			$output .= "\n";
-		}
+/* Don't let anyone access this script directly */
+defined( 'ABSPATH' ) or die ( 'You are not allowed here. Shame on you for snooping :-(' );
+
+/* include other classes */
+require_once ( 'classes/menus.php' );
+
+/* Remove jQuery Migrate Script from header */
+function ep_stop_loading_wp_embed_and_jquery() {
+	if (!is_admin()) {
 	}
-	
-	class everyday_publishing_small_menu extends Walker_Nav_Menu
-    {
-		function start_lvl( &$output, $depth = 0, $args = array() )
-        {
-			$indent = str_repeat("\t", $depth);
-			$output .= "\n$indent\n";
-		}
-        
-		function end_lvl( &$output, $depth = 0, $args = array() )
-        {
-			$indent = str_repeat("\t", $depth);
-			$output .= "$indent\n";
-		}
-        
-		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 )
-        {
-			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-			$class_names = $value = '';
-			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-			$classes[] = 'menu-item-' . $item->ID;
-			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
-			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-			$output .= $indent . '';
-			$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-			$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-			$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-			$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-			$item_output = $args->before;
-			$item_output .= '<a'. $attributes .' class="ep-bar-item ep-button ep-hover-light-brass">';
-			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-			$item_output .= '</a>';
-			$item_output .= $args->after;
-			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-		}
-        
-		function end_el( &$output, $item, $depth = 0, $args = array() )
-        {
-			$output .= "\n";
-		}
-	}
+}
+add_action('init', 'ep_stop_loading_wp_embed_and_jquery');
 
-	/* Remove automatic paragraph breaks from content and excerpt */
-	remove_filter(
-		'the_content',
-		'wpautop'
+/* Clear the head */
+remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+remove_action( 'wp_head', 'rest_output_link_wp_head' );
+remove_action( 'wp_head', 'rsd_link');
+remove_action( 'wp_head', 'wlwmanifest_link');
+remove_action( 'wp_head', 'wp_shortlink_wp_head');
+remove_action( 'wp_head', 'wp_generator');
+remove_action( 'wp_head', 'wp_resource_hints', 2 );
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+
+add_filter( 'embed_oembed_discover', '__return_false' );
+add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
+add_filter( 'xmlrpc_enabled', '__return_false' );
+add_filter( 'wp_headers', function ( $headers ) {unset( $headers['X-Pingback'] );return $headers;} );
+add_filter( 'xmlrpc_methods', function( $methods ) {unset( $methods[‘pingback.ping’] );return $methods;} );
+
+/* Enqueue the style sheets that we will use in the theme */
+function ep_enqueue_scripts () {
+
+		wp_deregister_script('wp-embed');
+		wp_deregister_script('jquery');
+	/* JavaScript for our own theme that we know is shown on every page */
+	wp_enqueue_script ( 'toggle_navigation', get_template_directory_uri().'/includes/toggle.js' );
+
+	/* CSS for our own theme that we know is shown on every page */
+	wp_enqueue_style ( 'everyday-publishing', get_stylesheet_uri() );
+	wp_enqueue_style ( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
+}
+add_action( 'wp_enqueue_scripts', 'ep_enqueue_scripts' );
+
+/* Allow us to use thumbnails and featured images in our theme */
+function ep_setup_theme () {
+	add_theme_support ( 'post-thumbnails' );
+
+	$name = 'ep_tiny_thumb';
+	$width = 320;
+	$height = 180;
+	$crop = true;
+	add_image_size($name, $width, $height, $crop);
+
+	$name = 'ep_small_thumb';
+	$width = 640;
+	$height = 360;
+	$crop = true;
+	add_image_size($name, $width, $height, $crop);
+
+	$name = 'ep_large_thumb';
+	$width = 960;
+	$height = 540;
+	$crop = true;
+	add_image_size($name, $width, $height, $crop);
+
+	$name = 'ep_largest_thumb';
+	$width = 1920;
+	$height = 1080;
+	$crop = true;
+	add_image_size($name, $width, $height, $crop);
+
+	register_nav_menu ( 'top-menu-bar', __( 'Top Menu Bar' ) );
+}
+add_action( 'after_setup_theme', 'ep_setup_theme' );
+
+/* Widgetise */
+function ep_widget_init () {
+	register_sidebar(
+		array(
+			'name'          => 'Sidebar Widgets',
+			'id'            => 'ep-aside-widgets',
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>'
+		)
 	);
-
-	remove_filter(
-		'the_excerpt',
-		'wpautop'
-	);
-
-?>
+}
+add_action( 'widgets_init', 'ep_widget_init' );
