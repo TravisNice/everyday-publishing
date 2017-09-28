@@ -52,24 +52,27 @@
 	}
 
 	get_header ();
+	echo '<section>';
+	if ( $name_error != "" ) echo '<blockquote class="ep-red"><small>'. $name_error .'</small></blockquote>';
+	if ( $email_error != "" ) echo '<blockquote class="ep-red"><small>'. $email_error .'</small></blockquote>';
+	if ( $message_error != "" ) echo '<blockquote class="ep-red"><small>'. $message_error .'</small></blockquote>';
+	if ( $success != "" ) echo '<blockquote class="ep-green"><small>'. $success .'</small></blockquote>';
+	echo '</section>';
 
 	echo '
 	<main>
 		<form method="post" action="">
 			<label for="your_name">Name:</label>
 			<input type="text" name="your_name" value="'. $your_name .'">
-			<small class="error">'. $name_error .'</small>
 
 			<label for="your_email">Email:</label>
 			<input type="text" name="your_email" value="'. $your_email .'">
-			<small class="error">'. $email_error .'</small>
 
 			<label for="your_message">Message:</label>
 			<textarea name="your_message" rows="2">'. $your_message .'</textarea>
-			<small class="error">'. $message_error .'</small>
 
-			<input type="submit" name="submit" value="Send">
-			<small class="success">'. $success .'</small>
+			<p class="form-submit"><input type="submit" name="submit" value="Send"></p>
+
 		</form>
 	</main>
 	';

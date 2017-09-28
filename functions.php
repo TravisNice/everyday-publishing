@@ -2,9 +2,6 @@
 /* Don't let anyone access this script directly */
 defined( 'ABSPATH' ) or die ( 'You are not allowed here. Shame on you for snooping :-(' );
 
-/* include other classes */
-require_once ( 'classes/menus.php' );
-
 /* Remove extraneous links from header */
 remove_action( 'rest_api_init', 'wp_oembed_register_route' );
 remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
@@ -64,13 +61,30 @@ add_action( 'after_setup_theme', 'ep_setup_theme' );
 function ep_widget_init () {
 	register_sidebar(
 		array(
+			'name'          => 'Front Page',
+			'id'            => 'ep-front-page-widgets',
+			'before_widget' => '<div class="ep-front-page-widget">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="ep-front-page-widget-title">',
+			'after_title'   => '</div>'
+		)
+	);
+
+	register_sidebar(
+		array(
 			'name'          => 'Sidebar Widgets',
 			'id'            => 'ep-aside-widgets',
 			'before_widget' => '',
 			'after_widget'  => '',
-			'before_title'  => '<h3>',
-			'after_title'   => '</h3>'
+			'before_title'  => '<h4>',
+			'after_title'   => '</h4>'
 		)
 	);
 }
 add_action( 'widgets_init', 'ep_widget_init' );
+
+require_once ( 'classes/widgets.php' );
+function ep_front_page_button_widget_registration () {
+	register_widget ( 'epFrontPageButtonWidget' );
+}
+add_action ( 'widgets_init', 'ep_front_page_button_widget_registration' );
