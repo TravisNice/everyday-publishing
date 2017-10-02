@@ -21,6 +21,10 @@ This theme is only available through the Everyday Publishing GitHub Repository.
 == Changelog ==
 
 = 3.1.2 =
+Changed the way Avatar's appear, by changing their float and margins. This way
+ they align with the top of the surrounding paragraph.
+
+= 3.1.1 =
 Added a feature where the post meta is displayed in the blog role.
 (archive.php, author-1.php, index.php, home.php)
 
