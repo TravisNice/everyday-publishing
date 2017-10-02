@@ -20,6 +20,10 @@ This theme is only available through the Everyday Publishing GitHub Repository.
 
 == Changelog ==
 
+= 3.1.2 =
+Added a feature where the post meta is displayed in the blog role.
+(archive.php, author-1.php, index.php, home.php)
+
 = 3.0.1 =
 Fixed a bug where slashes were still included in form data, after the call to
 sanitize_text_field().

@@ -36,20 +36,14 @@
 	echo '<p>Then one day, it hit me. All Business owners have their own specialities, mine just happens to be online marketing, not financial planning. I now build websites so businesses have a place to put their products, I help them generate content to explain their products, and I help them build advertising campaigns to find new customers.</p>';
 	echo '<hr />';
 
-	if (have_posts()) {
-		while (have_posts()) {
-			the_post();
-			echo '<span class="ep-article-meta">';
-			echo '<span class="author"><small><em><a href="'. get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ) .'" rel="author">'. get_the_author() .'</a></em></small></a></span>';
-			echo '<time itemprop="datePublished" content="'. get_the_time("Y-m-d") .'"><small><em>'. get_the_time("F jS, Y") .'</em></small></time>';
-			echo '</span>';
-
-			echo '<h3><a href="'. get_post_permalink() .'">'. get_the_title() .'</a></h3>';
-
+	if ( have_posts () ) {
+		while ( have_posts () ) {
+			the_post ();
 			echo '<article>';
-			the_excerpt();
+			include ( 'ep-post-meta.php' );
+			echo '<a href="'. get_the_permalink () .'"<h4>'. get_the_title () .'</h4></a>';
+			the_excerpt ();
 			echo '</article>';
-
 		}
 	}
 
