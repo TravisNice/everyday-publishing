@@ -20,6 +20,10 @@ This theme is only available through the Everyday Publishing GitHub Repository.
 
 == Changelog ==
 
+= 3.1.3 =
+Changed the way images appear in paragraphs to make text better wrap around
+them.
+
 = 3.1.2 =
 Changed the way Avatar's appear, by changing their float and margins. This way
  they align with the top of the surrounding paragraph.
