@@ -13,7 +13,7 @@
 		if ( empty( $_POST["your_name"] ) ) {
 			$name_error = "You must provide your name so I know who to reply to.";
 		} else {
-			$your_name = sanitize_text_field( $_POST["your_name"] );
+			$your_name = stripslashes( sanitize_text_field( $_POST["your_name"] ) );
 		}
 
 		if ( empty( $_POST["your_email"] ) ) {
@@ -25,7 +25,7 @@
 		if ( empty ( $_POST[ "your_message" ] ) ) {
 			$message_error = "There's little point sending a message without saying anything.";
 		} else {
-			$your_message = sanitize_text_field( $_POST["your_message"] );
+			$your_message = stripslashes( sanitize_text_field( $_POST["your_message"] ) );
 		}
 
 		if ( $name_error == "" && $email_error == "" && $message_error == "" ) {
