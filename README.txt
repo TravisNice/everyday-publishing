@@ -20,6 +20,10 @@ This theme is only available through the Everyday Publishing GitHub Repository.
 
 == Changelog ==
 
+= 3.1.4 =
+Changed the background-color of input[type=text] and textarea for greater
+visibility.
+
 = 3.1.3 =
 Changed the way images appear in paragraphs to make text better wrap around
 them.
