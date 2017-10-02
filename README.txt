@@ -20,6 +20,10 @@ This theme is only available through the Everyday Publishing GitHub Repository.
 
 == Changelog ==
 
+= 3.1.5 =
+Fixed a bug in the last change where I inlined paragraphs breaking their
+margins.
+
 = 3.1.4 =
 Changed the background-color of input[type=text] and textarea for greater
 visibility.
